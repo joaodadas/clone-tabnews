@@ -1,7 +1,8 @@
-import database from "infra/database";
+import Database from "infra/database";
 
 async function status(requst: any, response: any) {
   const updatedAt = new Date().toISOString();
+  const database = new Database();
 
   const postgresVersion = await database.query("SHOW SERVER_VERSION;");
   const postgresVersionValue = postgresVersion.rows[0].server_version;
